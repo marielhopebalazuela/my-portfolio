@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Mariel Hope Balazuela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* --- THEME VARIABLES --- */
+            --bg-gradient-start: #B2C8BA;
+            --bg-gradient-end: #8FBC8F;
+            
+            --card-glass: rgba(255, 255, 255, 0.85);
+            --card-border: rgba(255, 255, 255, 0.9);
+            
+            --text-main: #1F2923;
+            --text-muted: #4A6356;
+            
+            --accent: #1A4D2E;      /* Deep Forest Green */
+            --accent-light: #4F775E;
+            --accent-glow: rgba(26, 77, 46, 0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- BACKGROUND PATTERN --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                radial-gradient(var(--accent-glow) 1px, transparent 1px);
+            background-size: 30px 30px; 
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container { 
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto; 
+            padding: 2rem; 
+        }
+
+        /* --- NAVIGATION --- */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 1.5rem 2rem; 
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            margin-top: 1rem;
+            position: sticky; top: 20px;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--accent); cursor: pointer; letter-spacing: -0.5px; }
+        nav { display: flex; gap: 25px; }
+        nav a { 
+            color: var(--text-main); text-decoration: none; 
+            font-size: 0.95rem; font-weight: 600; 
+            position: relative;
+        }
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 0; background: var(--accent);
+            transition: width 0.3s;
+        }
+        nav a:hover::after { width: 100%; }
+        nav a:hover { color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            padding: 5rem 0; display: flex; align-items: center; gap: 4rem; 
+            min-height: 75vh;
+        }
+        .hero-content { flex: 1; }
+        
+        .profile-frame { flex-shrink: 0; position: relative; }
+        .profile-img {
+            width: 300px; height: 300px; object-fit: cover; border-radius: 40px; 
+            border: 5px solid rgba(255,255,255,0.6);
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.1), -20px -20px 60px rgba(255,255,255,0.2);
+            transition: transform 0.4s ease;
+        }
+        .profile-img:hover { transform: scale(1.02) rotate(2deg); }
+
+        .hero-content h1 { 
+            font-size: 4rem; margin: 0 0 1rem 0; 
+            line-height: 1.1; letter-spacing: -2px; 
+            color: var(--accent);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .hero-content p { 
+            font-size: 1.25rem; color: var(--text-muted); 
+            max-width: 600px; margin-bottom: 2rem;
+        }
+
+        /* --- GLOBAL TITLES --- */
+        section { padding-top: 5rem; padding-bottom: 2rem; }
+        .section-title {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 800;
+        }
+        .section-title::before {
+            content: "";
+            position: absolute;
+            left: 0; bottom: -8px;
+            width: 40px; height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* --- SKILLS/TECH STACK SECTION --- */
+        .tech-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
+        }
+        .tech-card {
+            background: var(--card-glass);
+            border: 1px solid var(--card-border);
+            padding: 1.5rem; border-radius: 12px;
+            transition: 0.3s;
+        }
+        .tech-card:hover { transform: translateY(-5px); background: #fff; }
+        .tech-header { font-weight: 700; color: var(--accent); margin-bottom: 1rem; font-size: 1.1rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 8px;}
+        
+        .pill-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .tech-pill {
+            background: rgba(33, 79, 50, 0.05);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* --- CARDS (Projects & Certs) --- */
+        .card-style {
+            background: var(--card-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+            transition: 0.3s all;
+        }
+        .card-style:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.1);
+            border-color: #fff;
+        }
+
+        /* --- PROJECT GRID --- */
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2.5rem; 
+        }
+        .project-card {
+            display: flex; flex-direction: column;
+            padding: 0; /* Override padding for image spacing */
+            overflow: hidden;
+            background: #fff;
+        }
+
+        /* SLIDER */
+        .img-container {
+            position: relative; width: 100%; height: 260px; 
+            background: #f0f0f0; border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .project-img { width: 100%; height: 100%; object-fit: contain; }
+        .slider-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.9); color: var(--accent); border: none;
+            width: 40px; height: 40px; border-radius: 50%;
+            cursor: pointer; font-weight: bold; z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: 0.2s; display: grid; place-items: center;
+        }
+        .slider-btn:hover { background: var(--accent); color: white; }
+        .prev { left: 15px; }
+        .next { right: 15px; }
+
+        .card-content { padding: 2rem; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-card h3 { margin: 0 0 0.5rem 0; color: var(--accent); font-size: 1.4rem; font-weight: 700;}
+        
+        .github-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            margin-top: auto; padding: 12px 20px;
+            background-color: var(--accent); color: #fff;
+            text-decoration: none; border-radius: 10px;
+            font-weight: 600; font-size: 0.9rem;
+            transition: 0.3s; width: fit-content;
+        }
+        .github-btn:hover { background-color: var(--accent-light); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* --- NOTEBOOKS GRID --- */
+        .notebook-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .notebook-group {
+            background: rgba(255,255,255,0.6);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .group-title {
+            font-size: 1.1rem; color: var(--accent);
+            font-weight: 800; margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 8px;
+        }
+        .notebook-link {
+            display: block;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem; font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .notebook-link:hover {
+            transform: translateX(5px);
+            border-left: 3px solid var(--accent);
+        }
+
+        /* --- HISTORY LIST --- */
+        .list-item { 
+            position: relative;
+            padding-left: 2rem; margin-bottom: 2.5rem; 
+        }
+        .list-item::before {
+            content: ""; position: absolute; left: 0; top: 5px;
+            width: 12px; height: 12px; background: var(--accent);
+            border-radius: 50%; box-shadow: 0 0 0 4px rgba(26, 77, 46, 0.15);
+        }
+        .list-item::after {
+            content: ""; position: absolute; left: 5px; top: 20px;
+            width: 2px; height: calc(100% + 15px); background: rgba(0,0,0,0.1);
+        }
+        .list-item:last-child::after { display: none; }
+        
+        .item-role { color: var(--text-main); font-weight: 800; font-size: 1.2rem; display: block;}
+        .item-sub { color: var(--accent); font-weight: 600; margin-bottom: 0.5rem; display: block; }
+        .item-date { font-size: 0.85rem; background: rgba(0,0,0,0.05); padding: 2px 8px; border-radius: 4px; font-weight: 600; color: var(--text-muted);}
+
+        /* --- SEMINARS --- */
+        .seminar-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1rem; }
+        .seminar-card {
+            background: rgba(255,255,255,0.6);
+            border-left: 4px solid var(--accent);
+            padding: 1.2rem; border-radius: 0 8px 8px 0;
+            transition: 0.2s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        .seminar-card:hover { background: #fff; transform: translateX(5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+        /* --- CERT GRID --- */
+        .cert-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem;
+        }
+        .cert-card-inner {
+            display: flex; flex-direction: column; justify-content: space-between; height: 100%;
+        }
+        .cert-name { font-weight: 700; color: var(--text-main); line-height: 1.3; margin-bottom: 10px;}
+        .cert-issuer { color: var(--accent); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
+
+        /* --- CONTACT --- */
+        .contact-box { display: flex; gap: 20px; margin-top: 25px; flex-wrap: wrap;}
+        .contact-link { 
+            padding: 14px 28px; 
+            background: var(--accent); 
+            color: #fff; 
+            text-decoration: none; 
+            border-radius: 12px; 
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(26, 77, 46, 0.2);
+            transition: 0.3s;
+        }
+        .contact-link:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(26, 77, 46, 0.3); }
+        .contact-link.secondary {
+            background: transparent; border: 2px solid var(--accent); color: var(--accent);
+            box-shadow: none;
+        }
+        .contact-link.secondary:hover { background: var(--accent); color: white; }
+
+        footer { 
+            text-align: center; padding: 4rem 0; color: var(--text-muted); 
+            font-size: 0.9rem; margin-top: 4rem; 
+            border-top: 1px solid rgba(0,0,0,0.05); 
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .container { width: 100%; padding: 1.5rem; }
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 2rem; gap: 2rem; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .profile-img { width: 220px; height: 220px; }
+            header { flex-direction: column; gap: 1rem; padding: 1rem; }
+            nav { gap: 15px; flex-wrap: wrap; justify-content: center;}
+            .project-grid { grid-template-columns: 1fr; } 
+            .cert-grid { grid-template-columns: 1fr; }
+            .notebook-container { grid-template-columns: 1fr; }
+            .seminar-grid { grid-template-columns: 1fr; }
+        }
+
+        .hidden { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .show { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <div class="logo" onclick="window.scrollTo(0,0)">M.Balazuela</div>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Tech Stack</a>
+                <a href="#projects">Projects</a>
+                <a href="#notebooks">Research</a>
+                <a href="#experience">History</a>
+            </nav>
+        </header>
+
+        <section class="hero hidden" id="about">
+            <div class="hero-content">
+                <p style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">Portfolio</p>
+                <h1>Mariel Hope Balazuela.</h1>
+                <p>
+                    Computer Science Student majoring in <strong>Intelligent Systems</strong>. 
+                    Building the future with Machine Learning, Software Engineering, and Predictive Modeling.
+                </p>
+                <div style="margin-top: 2rem;">
+                    <a href="#contact" class="contact-link">Let's Connect</a>
+                </div>
+            </div>
+            
+            <div class="profile-frame">
+                <img src="images/Balazuela_Pic.jpg" alt="Mariel Hope" class="profile-img">
+            </div>
+        </section>
+
+        <section id="skills" class="hidden">
+            <h2 class="section-title">Technical Arsenal</h2>
+            <div class="tech-grid">
+                
+                <div class="tech-card">
+                    <div class="tech-header">Data & AI</div>
+                    <div class="pill-container">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">Machine Learning</span>
+                        <span class="tech-pill">Google Colab</span>
+                        <span class="tech-pill">Jupyter Notebook</span>
+                        <span class="tech-pill">Roboflow (CV)</span>
+                        <span class="tech-pill">NLP</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-header">Software Engineering</div>
+                    <div class="pill-container">
+                        <span class="tech-pill">SDLC</span>
+                        <span class="tech-pill">Agile/Scrum</span>
+                        <span class="tech-pill">System Architecture</span>
+                        <span class="tech-pill">C# / .NET</span>
+                        <span class="tech-pill">Java</span>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-header">Tools & Design</div>
+                    <div class="pill-container">
+                        <span class="tech-pill">Lucidchart</span>
+                        <span class="tech-pill">Draw.io</span>
+                        <span class="tech-pill">HTML/CSS</span>
+                        <span class="tech-pill">Git/GitHub</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="projects" class="hidden">
+            <h2 class="section-title">Featured Applications</h2>
+            <div class="project-grid">
+                
+                <article class="project-card card-style">
+                    <div class="img-container">
+                        <button class="slider-btn prev" onclick="changeImage('dtect', -1)">&#10094;</button>
+                        <img src="images/dtect1.png" id="img-dtect" class="project-img" alt="D-TECT System">
+                        <button class="slider-btn next" onclick="changeImage('dtect', 1)">&#10095;</button>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h3>D-TECT System</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">
+                            A machine learning-based system designed to predict dengue risk severity in San Pablo City.
+                        </p>
+                        <div class="pill-container" style="margin-top: 10px; margin-bottom: 20px;">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">ML Models</span>
+                            <span class="tech-pill">Predictive Analytics</span>
+                        </div>
+                        <a href="https://github.com/seokmineral/D-TECT" target="_blank" class="github-btn">
+                            <span>View Source Code</span> &#8599;
+                        </a>
+                    </div>
+                </article>
+
+                <article class="project-card card-style">
+                    <div class="img-container">
+                        <button class="slider-btn prev" onclick="changeImage('burn', -1)">&#10094;</button>
+                        <img src="images/burn1.png" id="img-burn" class="project-img" alt="Calories App">
+                        <button class="slider-btn next" onclick="changeImage('burn', 1)">&#10095;</button>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h3>BurnItNow</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">
+                            A web application that predicts calories burnt based on exercise intensity and duration inputs.
+                        </p>
+                        <div class="pill-container" style="margin-top: 10px; margin-bottom: 20px;">
+                            <span class="tech-pill">Web App</span>
+                            <span class="tech-pill">Data Analytics</span>
+                            <span class="tech-pill">Health Tech</span>
+                        </div>
+                        <a href="https://github.com/seokmineral/BurnItNow" target="_blank" class="github-btn">
+                            <span>View Source Code</span> &#8599;
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="notebooks" class="hidden">
+            <h2 class="section-title">Research & Notebooks</h2>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">A collection of my data analysis, NLP, and computer vision experiments on Google Colab.</p>
+            
+            <div class="notebook-container">
+                
+                <div class="notebook-group card-style">
+                    <div class="group-title">Medical & Health AI</div>
+                    
+                    <div style="font-size:0.85rem; color:#666; margin-bottom:5px;">Dengue Dataset</div>
+                    <a href="https://colab.research.google.com/drive/1JXMMc08hnc4kJhRasJrgH1asIIGs1nZP?usp=sharing" target="_blank" class="notebook-link">
+                        Visualizations
+                    </a>
+                    <a href="https://colab.research.google.com/drive/1x8OFbbFL9jbQh2HCL1SI3eK__0FAH7P-?usp=sharing" target="_blank" class="notebook-link">
+                        Model Comparison
+                    </a>
+
+                    <div style="font-size:0.85rem; color:#666; margin-bottom:5px; margin-top: 15px;">Wound Classification (CV)</div>
+                    <a href="https://colab.research.google.com/drive/1_kagWHdhPAS53AhJyBQiyzZ2z5AsAa-C?usp=sharing" target="_blank" class="notebook-link">
+                        Computer Vision Part 1
+                    </a>
+                    <a href="https://colab.research.google.com/drive/19IDbo9nQLAJNYSk6oJxFkXSvPlXaLvvD?usp=sharing" target="_blank" class="notebook-link">
+                        Computer Vision Part 2
+                    </a>
+                </div>
+
+                <div class="notebook-group card-style">
+                    <div class="group-title">ML Algorithms</div>
+                    
+                    <a href="https://colab.research.google.com/drive/1Iy50Ky8Oc6dtLE_Pt6npPScMd_jlLakZ?usp=sharing" target="_blank" class="notebook-link">
+                        Hierarchical Clustering
+                    </a>
+                    <a href="https://colab.research.google.com/drive/1XR6ce48kie9DleeGo3mHYr2QlN1-0b0_?usp=sharing" target="_blank" class="notebook-link">
+                        Mean Shift Algorithm
+                    </a>
+                    <a href="https://colab.research.google.com/drive/1WOmjfSiaNs4QwhflW4JMxpyzTSHCiJeU?usp=sharing" target="_blank" class="notebook-link">
+                        Logistic Regression
+                    </a>
+                </div>
+
+                <div class="notebook-group card-style">
+                    <div class="group-title">Security & NLP</div>
+                    
+                    <div style="font-size:0.85rem; color:#666; margin-bottom:5px;">Natural Language Processing</div>
+                    <a href="https://colab.research.google.com/drive/1Zg01P3fmjmMbL3aXyAZMKzWYqCwFRAwM?usp=sharing" target="_blank" class="notebook-link">
+                        Narrative Reports
+                    </a>
+
+                    <div style="font-size:0.85rem; color:#666; margin-bottom:5px; margin-top: 15px;">Financial Security</div>
+                    <a href="https://colab.research.google.com/drive/1FNR4qLd1pf0nrKnqfdAis5C_P5Vmy5lQ?usp=sharing" target="_blank" class="notebook-link">
+                        Fraud Classification
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="experience" class="hidden">
+            
+            <h2 class="section-title">Education & History</h2>
+            
+            <div class="list-item">
+                <span class="item-role">BS Computer Science (Intelligent Systems)</span>
+                <span class="item-sub">Laguna State Polytechnic University - SPCC</span>
+                <span class="item-date">2022 - 2026 (Expected)</span>
+            </div>
+
+            <div class="list-item">
+                <span class="item-role">SHS (STEM Strand)</span>
+                <span class="item-sub">Jesus Is Lord Christian School - Tanauan</span>
+                <span class="item-date">2020 - 2022</span>
+            </div>
+
+            <h3 style="color: var(--accent); margin-top: 3rem;">Organizations & Leadership</h3>
+            
+            <div class="list-item">
+                <span class="item-role">3rd Year Representative</span>
+                <span class="item-sub">LSPU-SPCC: OCTA (CCS Main Org)</span>
+                <span class="item-date">2024 - 2025</span>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">
+                    Representing the ALGO student body and coordinating academic events.
+                </p>
+            </div>
+
+            <div class="list-item">
+                <span class="item-role">Staff Writer / Contributor</span>
+                <span class="item-sub">CCS ECHO Newsletter</span>
+                <span class="item-date">2023 - Present</span>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">
+                    Writing and documenting events for the College of Computer Studies.
+                </p>
+            </div>
+
+            <h3 style="color: var(--accent); margin-top: 3rem; margin-bottom: 1.5rem;">Seminars & Workshops</h3>
+            <div class="seminar-grid">
+                
+                <div class="seminar-card">
+                    <div style="font-weight: 700;">Agentblazer Champion Workshop</div>
+                    <div style="font-size: 0.85rem; color: #555;">SmartBridge & Salesforce • October 2025</div>
+                </div>
+
+                <div class="seminar-card">
+                    <div style="font-weight: 700;">Power of Data: From Exploration to Advanced Analytic</div>
+                    <div style="font-size: 0.85rem; color: #555;">NEUST (University Training Department) • February 28, 2025</div>
+                </div>
+
+                <div class="seminar-card">
+                    <div style="font-weight: 700;">CCS Learn Fest 2023</div>
+                    <div style="font-size: 0.85rem; color: #555;">Exploring the Frontiers of IT & CS • 2023</div>
+                </div>
+
+                <div class="seminar-card">
+                    <div style="font-weight: 700;">15th EdukCircle Convention</div>
+                    <div style="font-size: 0.85rem; color: #555;">Engineering and Computer Technology • 2023</div>
+                </div>
+
+            </div>
+
+            <h2 class="section-title" style="margin-top: 3rem;">Certifications</h2>
+            <div class="cert-grid">
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Agentblazer Champion</div>
+                    <div class="cert-issuer">SmartBridge & Salesforce</div>
+                </div>
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Artificial Intelligence Fundamentals</div>
+                    <div class="cert-issuer">IBM</div>
+                </div>
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Agile Explorer</div>
+                    <div class="cert-issuer">IBM</div>
+                </div>
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Project Management Fundamentals</div>
+                    <div class="cert-issuer">IBM</div>
+                </div>
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Python Essentials #1</div>
+                    <div class="cert-issuer">Cisco</div>
+                </div>
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Introduction to Data Science</div>
+                    <div class="cert-issuer">Cisco</div>
+                </div>
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Introduction to Cybersecurity</div>
+                    <div class="cert-issuer">Cisco</div>
+                </div>
+                <div class="card-style cert-card-inner">
+                    <div class="cert-name">Digital Awareness</div>
+                    <div class="cert-issuer">Cisco</div>
+                </div>
+                 <div class="card-style cert-card-inner">
+                    <div class="cert-name">Operating Systems Basics</div>
+                    <div class="cert-issuer">Cisco</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="contact" class="hidden">
+            <h2 class="section-title">Let's Connect</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px;">
+                I am currently open to collaborations and actively preparing for my internship in January 2026.
+            </p>
+            <div class="contact-box">
+                <a href="mailto:marielhopebalazuela@gmail.com" class="contact-link">Email Me</a>
+                <a href="https://www.linkedin.com/in/mariel-hope-balazuela-950a67269/" target="_blank" class="contact-link secondary">LinkedIn Profile</a>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 Mariel Hope Balazuela. Built with HTML & JS.
+        </footer>
+
+    </div>
+
+    <script>
+        const limits = {
+            'dtect': 12, // dtect1.png to dtect12.png
+            'burn': 7    // burn1.png to burn7.png
+        };
+
+        let indices = {
+            'dtect': 1,
+            'burn': 1
+        };
+
+        function changeImage(project, direction) {
+            indices[project] += direction;
+
+            if (indices[project] > limits[project]) indices[project] = 1;
+            if (indices[project] < 1) indices[project] = limits[project];
+
+            const imgElement = document.getElementById(`img-${project}`);
+            imgElement.src = `images/${project}${indices[project]}.png`;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        });
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>

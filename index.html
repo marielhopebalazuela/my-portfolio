@@ -4,40 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Mariel Hope Balazuela</title>
+    <link rel="icon" href="images/favicon.png" type="image/png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
+    <header>
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav-menu">
+            <a href="#about" onclick="closeMenu()">About</a>
+            <a href="#background" onclick="closeMenu()">Background</a>
+            <a href="#academic" onclick="closeMenu()">Academic</a>
+            <a href="#projects" onclick="closeMenu()">Projects</a>
+            <a href="#notebooks" onclick="closeMenu()">Notebooks</a>
+            <a href="#certifications" onclick="closeMenu()">Certifications</a>
+        </nav>
+    </header>
+
     <div class="container">
         
-        <header>
-            <div class="logo" onclick="window.scrollTo(0,0)">M.Balazuela</div>
-            
-            <div class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-
-            <nav id="nav-menu">
-                <a href="#about" onclick="closeMenu()">About</a>
-                <a href="#academic" onclick="closeMenu()">Academic Experience</a>
-                <a href="#projects" onclick="closeMenu()">Projects</a>
-                <a href="#notebooks" onclick="closeMenu()">Notebooks</a>
-                <a href="#background" onclick="closeMenu()">Background</a>
-                <a href="#certifications" onclick="closeMenu()">Certifications</a>
-            </nav>
-        </header>
-
         <section class="hero hidden" id="about">
             <div class="hero-content">
                 <p style="color: var(--accent); font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">Portfolio</p>
                 <h1>Mariel Hope Balazuela.</h1>
-                <p>
-                    Computer Science Student majoring in <strong>Intelligent Systems</strong>. 
+                <p class="hero-desc">
+                    Computer Science Student specializing in: <br>
+                    <span class="typewriter-text" id="typewriter"></span><span class="cursor">|</span>
+                </p>
+                <p style="color: var(--text-muted); margin-top: 10px;">
                     Building the future with Machine Learning, Software Engineering, and Predictive Modeling.
                 </p>
                 <div style="margin-top: 2rem;">
@@ -50,11 +58,65 @@
             </div>
         </section>
 
+        <section id="background" class="hidden">
+            <h2 class="section-title">Background History</h2>
+            
+            <h3 class="sub-title">Education</h3>
+            <div class="list-item">
+                <span class="item-role">BS Computer Science (Intelligent Systems)</span>
+                <span class="item-sub">Laguna State Polytechnic University - SPCC</span>
+                <span class="item-date">2022 - 2026</span>
+            </div>
+            <div class="list-item">
+                <span class="item-role">SHS (STEM Strand)</span>
+                <span class="item-sub">Jesus Is Lord Christian School - Tanauan</span>
+                <span class="item-date">2020 - 2022</span>
+            </div>
+
+            <h3 class="sub-title">Organizations & Leadership</h3>
+            <div class="list-item">
+                <span class="item-role">3rd Year Representative</span>
+                <span class="item-sub">LSPU-SPCC: OCTA (CCS Main Org)</span>
+                <span class="item-date">2024 - 2025</span>
+                <p style="font-size: 0.9rem; margin-top: 5px; color: var(--text-muted);">
+                    Representing the ALGO student body and coordinating academic events.
+                </p>
+            </div>
+
+            <div class="list-item">
+                <span class="item-role">Staff Writer / Contributor</span>
+                <span class="item-sub">CCS ECHO Newsletter</span>
+                <span class="item-date">2023 - Present</span>
+                <p style="font-size: 0.9rem; margin-top: 5px; color: var(--text-muted);">
+                    Writing and documenting events for the College of Computer Studies.
+                </p>
+            </div>
+
+            <h3 class="sub-title">Seminars & Workshops</h3>
+            <div class="seminar-grid">
+                <div class="seminar-card">
+                    <div class="seminar-title">Agentblazer Champion Workshop</div>
+                    <div class="seminar-meta">SmartBridge & Salesforce • October 2025</div>
+                </div>
+                <div class="seminar-card">
+                    <div class="seminar-title">Power of Data: From Exploration to Advanced Analytic</div>
+                    <div class="seminar-meta">NEUST (University Training Department) • February 28, 2025</div>
+                </div>
+                <div class="seminar-card">
+                    <div class="seminar-title">CCS Learn Fest 2023</div>
+                    <div class="seminar-meta">Exploring the Frontiers of IT & CS • 2023</div>
+                </div>
+                <div class="seminar-card">
+                    <div class="seminar-title">15th EdukCircle Convention</div>
+                    <div class="seminar-meta">Engineering and Computer Technology • 2023</div>
+                </div>
+            </div>
+        </section>
+
         <section id="academic" class="hidden">
             <h2 class="section-title">Academic Experience</h2>
             
             <div class="tech-grid">
-                
                 <div class="tech-card">
                     <div class="tech-header">Programming Languages</div>
                     <div class="pill-container">
@@ -83,17 +145,19 @@
                 </div>
 
                 <div class="tech-card">
-                    <div class="tech-header">Dev Tools & Environment</div>
+                    <div class="tech-header">Dev Tools</div>
                     <div class="pill-container">
                         <span class="tech-pill">VS Code</span>
                         <span class="tech-pill">Jupyter Notebook</span>
                         <span class="tech-pill">Google Colab</span>
                         <span class="tech-pill">Git</span>
                         <span class="tech-pill">GitHub</span>
+                        <span class="tech-pill">Microsoft Visual Studio</span>
+                        <span class="tech-pill">NetBeans</span>
                     </div>
                 </div>
-
-                <div class="tech-card">
+                
+                 <div class="tech-card">
                     <div class="tech-header">Design & Platforms</div>
                     <div class="pill-container">
                         <span class="tech-pill">Lucidchart</span>
@@ -103,17 +167,14 @@
                         <span class="tech-pill">Microsoft Suite</span>
                     </div>
                 </div>
-
             </div>
 
             <div class="tools-wrapper hidden">
                 <h3 style="text-align: center; color: var(--accent); margin: 3rem 0 1.5rem 0;">Tools Overview</h3>
-                
                 <div class="card-style tools-card">
-                    <img src="tools.jpg" alt="Tools and Technologies" class="tools-img-style">
+                    <img src="tools.jpg" alt="Tools" class="tools-img-style">
                 </div>
             </div>
-
         </section>
 
         <section id="projects" class="hidden">
@@ -126,7 +187,6 @@
                         <img src="images/dtect1.png" id="img-dtect" class="project-img" alt="D-TECT System">
                         <button class="slider-btn next" onclick="changeImage('dtect', 1)">&#10095;</button>
                     </div>
-                    
                     <div class="card-content">
                         <h3>D-TECT System</h3>
                         <p style="color: var(--text-muted); font-size: 0.95rem;">
@@ -138,7 +198,7 @@
                             <span class="tech-pill">Predictive Analytics</span>
                         </div>
                         <a href="https://github.com/seokmineral/D-TECT" target="_blank" class="github-btn">
-                            <span>View Source Code</span> &#8599;
+                            View Source Code
                         </a>
                     </div>
                 </article>
@@ -149,7 +209,6 @@
                         <img src="images/burn1.png" id="img-burn" class="project-img" alt="Calories App">
                         <button class="slider-btn next" onclick="changeImage('burn', 1)">&#10095;</button>
                     </div>
-                    
                     <div class="card-content">
                         <h3>BurnItNow</h3>
                         <p style="color: var(--text-muted); font-size: 0.95rem;">
@@ -161,7 +220,7 @@
                             <span class="tech-pill">Health Tech</span>
                         </div>
                         <a href="https://github.com/seokmineral/BurnItNow" target="_blank" class="github-btn">
-                            <span>View Source Code</span> &#8599;
+                            View Source Code
                         </a>
                     </div>
                 </article>
@@ -171,178 +230,81 @@
 
         <section id="notebooks" class="hidden">
             <h2 class="section-title">Notebooks & Research</h2>
-            <p style="margin-bottom: 2rem; color: var(--text-muted);">A collection of experiments using real and synthetic datasets, exploring various algorithms, and comparing model accuracies.</p>
-            
             <div class="notebook-container">
                 
-                <div class="notebook-group card-style">
-                    <div class="group-title">Data Experiments</div>
-                    
-                    <a href="https://colab.research.google.com/drive/1FNR4qLd1pf0nrKnqfdAis5C_P5Vmy5lQ?usp=sharing" target="_blank" class="notebook-link">
-                        Fraud Classification
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1OCxOe6HdFMKzQTc6_GC_CWybYQXwITN6?usp=sharing" target="_blank" class="notebook-link">
-                        Canada or USA Prediction
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1pCzDm1WfFco-x0sh9gOErKwJCFtGMLmR?usp=sharing" target="_blank" class="notebook-link">
-                        Epochs
-                    </a>
+                <div class="notebook-group">
+                    <div class="group-header">Data Experiments</div>
+                    <div class="notebook-content">
+                        <a href="https://colab.research.google.com/drive/1FNR4qLd1pf0nrKnqfdAis5C_P5Vmy5lQ?usp=sharing" target="_blank" class="notebook-link">Fraud Classification</a>
+                        <a href="https://colab.research.google.com/drive/1OCxOe6HdFMKzQTc6_GC_CWybYQXwITN6?usp=sharing" target="_blank" class="notebook-link">Canada or USA Prediction</a>
+                        <a href="https://colab.research.google.com/drive/1pCzDm1WfFco-x0sh9gOErKwJCFtGMLmR?usp=sharing" target="_blank" class="notebook-link">Epochs</a>
+                    </div>
                 </div>
 
-                <div class="notebook-group card-style">
-                    <div class="group-title">ML Algorithms</div>
-                    
-                    <a href="https://colab.research.google.com/drive/1Iy50Ky8Oc6dtLE_Pt6npPScMd_jlLakZ?usp=sharing" target="_blank" class="notebook-link">
-                        Hierarchical Clustering
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1XR6ce48kie9DleeGo3mHYr2QlN1-0b0_?usp=sharing" target="_blank" class="notebook-link">
-                        Mean Shift Algorithm
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1WOmjfSiaNs4QwhflW4JMxpyzTSHCiJeU?usp=sharing" target="_blank" class="notebook-link">
-                        Logistic Regression
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1Ttsd12JF7-Osup77jBxEuSH9NWyOJ0Th?usp=sharing" target="_blank" class="notebook-link">
-                        GBM (ARI Classification)
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1_ASVfDIJ9TQueTCRlOoNWr3nmyn3EBvf?usp=sharing" target="_blank" class="notebook-link">
-                        SVM (ARI Classification)
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1_Rfn6NaR5LMsVyFI7wd89093biWUEla9?usp=sharing" target="_blank" class="notebook-link">
-                        Decision Tree (Adult Census)
-                    </a>
+                <div class="notebook-group">
+                    <div class="group-header">ML Algorithms</div>
+                    <div class="notebook-content">
+                        <a href="https://colab.research.google.com/drive/1Iy50Ky8Oc6dtLE_Pt6npPScMd_jlLakZ?usp=sharing" target="_blank" class="notebook-link">Hierarchical Clustering</a>
+                        <a href="https://colab.research.google.com/drive/1XR6ce48kie9DleeGo3mHYr2QlN1-0b0_?usp=sharing" target="_blank" class="notebook-link">Mean Shift Algorithm</a>
+                        <a href="https://colab.research.google.com/drive/1WOmjfSiaNs4QwhflW4JMxpyzTSHCiJeU?usp=sharing" target="_blank" class="notebook-link">Logistic Regression</a>
+                        <a href="https://colab.research.google.com/drive/1Ttsd12JF7-Osup77jBxEuSH9NWyOJ0Th?usp=sharing" target="_blank" class="notebook-link">GBM (ARI Classification)</a>
+                        <a href="https://colab.research.google.com/drive/1_ASVfDIJ9TQueTCRlOoNWr3nmyn3EBvf?usp=sharing" target="_blank" class="notebook-link">SVM (ARI Classification)</a>
+                        <a href="https://colab.research.google.com/drive/1_Rfn6NaR5LMsVyFI7wd89093biWUEla9?usp=sharing" target="_blank" class="notebook-link">Decision Tree (Adult Census)</a>
+                    </div>
                 </div>
 
-                <div class="notebook-group card-style">
-                    <div class="group-title">Medical & Health AI</div>
-                    <div style="font-size:0.85rem; color:#666; margin-bottom:5px;">Dengue Dataset</div>
-                    <a href="https://colab.research.google.com/drive/1JXMMc08hnc4kJhRasJrgH1asIIGs1nZP?usp=sharing" target="_blank" class="notebook-link">
-                        Visualizations
-                    </a>
-                    <a href="https://colab.research.google.com/drive/1x8OFbbFL9jbQh2HCL1SI3eK__0FAH7P-?usp=sharing" target="_blank" class="notebook-link">
-                        Model Comparison
-                    </a>
-
-                    <div style="font-size:0.85rem; color:#666; margin-bottom:5px; margin-top: 15px;">Wound Classification (CV)</div>
-                    <a href="https://colab.research.google.com/drive/1_kagWHdhPAS53AhJyBQiyzZ2z5AsAa-C?usp=sharing" target="_blank" class="notebook-link">
-                        Computer Vision Part 1
-                    </a>
-                    <a href="https://colab.research.google.com/drive/19IDbo9nQLAJNYSk6oJxFkXSvPlXaLvvD?usp=sharing" target="_blank" class="notebook-link">
-                        Computer Vision Part 2
-                    </a>
-                </div>
-                
-                 <div class="notebook-group card-style">
-                    <div class="group-title">Natural Language Processing</div>
-                    
-                    <div style="font-size:0.85rem; color:#666; margin-bottom:5px;">Natural Language Processing</div>
-                    <a href="https://colab.research.google.com/drive/1Zg01P3fmjmMbL3aXyAZMKzWYqCwFRAwM?usp=sharing" target="_blank" class="notebook-link">
-                        Narrative Reports
-                    </a>
+                <div class="notebook-group">
+                    <div class="group-header">Medical & Health AI</div>
+                    <div class="notebook-content">
+                        <div style="font-size:0.8rem; color:#888; margin-bottom:5px; font-weight:700; text-transform:uppercase;">Dengue</div>
+                        <a href="https://colab.research.google.com/drive/1JXMMc08hnc4kJhRasJrgH1asIIGs1nZP?usp=sharing" target="_blank" class="notebook-link">Visualizations</a>
+                        <a href="https://colab.research.google.com/drive/1x8OFbbFL9jbQh2HCL1SI3eK__0FAH7P-?usp=sharing" target="_blank" class="notebook-link">Model Comparison</a>
+                        
+                        <div style="font-size:0.8rem; color:#888; margin-bottom:5px; margin-top:15px; font-weight:700; text-transform:uppercase;">Computer Vision</div>
+                        <a href="https://colab.research.google.com/drive/1_kagWHdhPAS53AhJyBQiyzZ2z5AsAa-C?usp=sharing" target="_blank" class="notebook-link">Wound CV Part 1</a>
+                        <a href="https://colab.research.google.com/drive/19IDbo9nQLAJNYSk6oJxFkXSvPlXaLvvD?usp=sharing" target="_blank" class="notebook-link">Wound CV Part 2</a>
+                    </div>
                 </div>
 
             </div>
-        </section>
-
-        <section id="background" class="hidden">
-            <h2 class="section-title">Background History</h2>
-            
-            <h3 style="color: var(--accent); margin-bottom: 1.5rem;">Education</h3>
-            
-            <div class="list-item">
-                <span class="item-role">BS Computer Science (Intelligent Systems)</span>
-                <span class="item-sub">Laguna State Polytechnic University - SPCC</span>
-                <span class="item-date">2022 - 2026 (Expected)</span>
-            </div>
-
-            <div class="list-item">
-                <span class="item-role">SHS (STEM Strand)</span>
-                <span class="item-sub">Jesus Is Lord Christian School - Tanauan</span>
-                <span class="item-date">2020 - 2022</span>
-            </div>
-
-            <h3 style="color: var(--accent); margin-top: 3rem; margin-bottom: 1.5rem;">Organizations & Leadership</h3>
-            
-            <div class="list-item">
-                <span class="item-role">3rd Year Representative</span>
-                <span class="item-sub">LSPU-SPCC: OCTA (CCS Main Org)</span>
-                <span class="item-date">2024 - 2025</span>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">
-                    Representing the ALGO student body and coordinating academic events.
-                </p>
-            </div>
-
-            <div class="list-item">
-                <span class="item-role">Staff Writer / Contributor</span>
-                <span class="item-sub">CCS ECHO Newsletter</span>
-                <span class="item-date">2023 - Present</span>
-                <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 5px;">
-                    Writing and documenting events for the College of Computer Studies.
-                </p>
-            </div>
-
-            <h3 style="color: var(--accent); margin-top: 3rem; margin-bottom: 1.5rem;">Seminars & Workshops</h3>
-            <div class="seminar-grid">
-                
-                <div class="seminar-card">
-                    <div style="font-weight: 700;">Agentblazer Champion Workshop</div>
-                    <div style="font-size: 0.85rem; color: #555;">SmartBridge & Salesforce • October 2025</div>
-                </div>
-
-                <div class="seminar-card">
-                    <div style="font-weight: 700;">Power of Data: From Exploration to Advanced Analytic</div>
-                    <div style="font-size: 0.85rem; color: #555;">NEUST (University Training Department) • February 28, 2025</div>
-                </div>
-
-                <div class="seminar-card">
-                    <div style="font-weight: 700;">CCS Learn Fest 2023</div>
-                    <div style="font-size: 0.85rem; color: #555;">Exploring the Frontiers of IT & CS • 2023</div>
-                </div>
-
-                <div class="seminar-card">
-                    <div style="font-weight: 700;">15th EdukCircle Convention</div>
-                    <div style="font-size: 0.85rem; color: #555;">Engineering and Computer Technology • 2023</div>
-                </div>
-
-            </div>
-
         </section>
 
         <section id="certifications" class="hidden">
             <h2 class="section-title">Certifications</h2>
             <div class="cert-grid">
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Agentblazer Champion</div>
                     <div class="cert-issuer">SmartBridge & Salesforce</div>
                 </div>
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Artificial Intelligence Fundamentals</div>
                     <div class="cert-issuer">IBM</div>
                 </div>
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Agile Explorer</div>
                     <div class="cert-issuer">IBM</div>
                 </div>
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Project Management Fundamentals</div>
                     <div class="cert-issuer">IBM</div>
                 </div>
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Python Essentials #1</div>
                     <div class="cert-issuer">Cisco</div>
                 </div>
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Introduction to Data Science</div>
                     <div class="cert-issuer">Cisco</div>
                 </div>
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Introduction to Cybersecurity</div>
                     <div class="cert-issuer">Cisco</div>
                 </div>
-                <div class="card-style cert-card-inner">
+                <div class="cert-card">
                     <div class="cert-name">Digital Awareness</div>
                     <div class="cert-issuer">Cisco</div>
                 </div>
-                 <div class="card-style cert-card-inner">
+                 <div class="cert-card">
                     <div class="cert-name">Operating Systems Basics</div>
                     <div class="cert-issuer">Cisco</div>
                 </div>
@@ -351,17 +313,14 @@
 
         <section id="contact" class="hidden">
             <h2 class="section-title">Let's Connect</h2>
-            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px;">
-                I am currently open to collaborations and actively preparing for my internship in January 2026.
-            </p>
             <div class="contact-box">
                 <a href="mailto:marielhopebalazuela@gmail.com" class="contact-link">Email Me</a>
-                <a href="https://www.linkedin.com/in/mariel-hope-balazuela-950a67269/" target="_blank" class="contact-link secondary">LinkedIn Profile</a>
+                <a href="https://www.linkedin.com/in/mariel-hope-balazuela-950a67269/" target="_blank" class="contact-link secondary">LinkedIn</a>
             </div>
         </section>
 
         <footer>
-            &copy; 2025 Mariel Hope Balazuela. Built with HTML & JS.
+            &copy; 2025 Mariel Hope Balazuela.
         </footer>
 
     </div>

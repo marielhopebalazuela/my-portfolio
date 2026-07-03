@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Mariel Hope Balazuela</title>
+    <link rel="icon" href="../images/icon/favicon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span></button>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="skills.html">Skills</a>
+            <a href="projects.html" class="active-nav">Projects</a>
+            <a href="notebooks.html">Research</a>
+            <a href="experience.html">History</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main>
+            <section id="projects">
+                <h2 class="section-title" data-aos="fade-up">Featured Applications</h2>
+                <div class="project-grid">
+                    
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <button class="slider-btn prev" onclick="changeImage('dtect', -1)">&#10094;</button>
+                            <img src="../images/projects/dtect1.png" id="img-dtect" class="project-img" alt="D-TECT system interface showing dengue prediction analytics">
+                            <button class="slider-btn next" onclick="changeImage('dtect', 1)">&#10095;</button>
+                        </div>
+                        <div class="card-content">
+                            <h3>D-TECT System</h3>
+                            <p class="project-description">
+                                D-TECT is our undergraduate thesis project, a machine learning system designed to predict dengue risk severity in San Pablo City. 
+                                Our group analyzed a dataset of over 243,265 records to identify outbreak trends. 
+                                My part was training and comparing various models including LSTM, XGBoost, GBM, Random Forest, Decision Tree, and SVM to ensure the highest prediction accuracy. 
+                                I was also in charge of creating the system flowcharts and drafting the majority of the project documentation.
+                            </p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">Python & ML</span>
+                                <span class="tech-pill">Supabase</span>
+                                <span class="tech-pill">Seaborn & Matplotlib</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <button class="slider-btn prev" onclick="changeImage('burn', -1)">&#10094;</button>
+                            <img src="../images/projects/burn1.png" id="img-burn" class="project-img" alt="BurnItNow application interface">
+                            <button class="slider-btn next" onclick="changeImage('burn', 1)">&#10095;</button>
+                        </div>
+                        <div class="card-content">
+                            <h3>BurnItNow</h3>
+                            <p class="project-description">
+                                BurnItNow is a web application that helps users track their fitness progress. 
+                                It uses a machine learning model trained with XGBoost to accurately predict how many calories a user burns based on the intensity and duration of their exercises. 
+                                The goal is to provide users with clear, data-driven insights to help them reach their fitness goals more effectively.
+                            </p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">Web App</span>
+                                <span class="tech-pill">Data Analytics</span>
+                                <span class="tech-pill">Health Tech</span>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <button class="slider-btn prev" onclick="changeImage('booknook', -1)">&#10094;</button>
+                            <img src="../images/projects/booknook1.png" id="img-booknook" class="project-img" alt="BookNook PH e-commerce platform interface">
+                            <button class="slider-btn next" onclick="changeImage('booknook', 1)">&#10095;</button>
+                        </div>
+                        <div class="card-content">
+                            <h3>BookNook PH</h3>
+                            <p class="project-description">
+                                BookNook PH was developed as part of my internship training at Armada Logics Inc. 
+                                It is an e-commerce platform designed to make buying and selling pre-loved books easier. 
+                                My contributions included designing low-fidelity wireframes and building the front-end architecture to ensure a secure and smooth user experience during login and transactions.
+                            </p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">HTML/CSS</span>
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">GitHub</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="project-videos">
+                <h2 class="section-title" data-aos="fade-up">Mini Projects during Internship at Armada Logics Inc.</h2>
+                <div class="project-grid">
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/O91TjNN7h1Q" title="Netflix Front-end Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Netflix Front-end</h3>
+                            <p class="project-description">Web Fundamentals (HTML, CSS, Bootstrap, JavaScript): Built a responsive front-end clone of the Netflix interface.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">HTML</span>
+                                <span class="tech-pill">CSS</span>
+                                <span class="tech-pill">Bootstrap</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/A-AR_AT7uDA" title="Stack Overflow Front-end Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Stack Overflow Front-end</h3>
+                            <p class="project-description">Web Fundamentals (HTML, CSS, Bootstrap, JavaScript): Developed a responsive UI layout mirroring the Stack Overflow website.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">UI</span>
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">Responsive</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/8PYZgBQlppk" title="Simple Bank Account Manager Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Simple Bank Account Manager</h3>
+                            <p class="project-description">Web Fundamentals (HTML, CSS, Bootstrap, JavaScript): Programmed core banking logic and state management using JavaScript.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">JavaScript</span>
+                                <span class="tech-pill">Logic</span>
+                                <span class="tech-pill">State</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/Qhc6g7fxnqs" title="Character Selection Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Character Selection</h3>
+                            <p class="project-description">jQuery Interactions: Developed dynamic selection and rendering features.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">jQuery</span>
+                                <span class="tech-pill">Selection</span>
+                                <span class="tech-pill">Interactive</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/0E__qkMlc2I" title="Explore Philippines Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Explore Philippines</h3>
+                            <p class="project-description">jQuery Interactions: Utilized Slick, jQueryUI, and TypeIt plugins to build an interactive, animated UI.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">jQuery</span>
+                                <span class="tech-pill">Animation</span>
+                                <span class="tech-pill">Plugins</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/BFh5VtlM0AI" title="Simple Kanban Board Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Simple Kanban Board</h3>
+                            <p class="project-description">jQuery Interactions: Integrated the jQueryUI sortable function for drag-and-drop task management.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">jQueryUI</span>
+                                <span class="tech-pill">Drag & Drop</span>
+                                <span class="tech-pill">Productivity</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/Vz6uBQSZfjA" title="Vaccination Form Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Vaccination Form</h3>
+                            <p class="project-description">jQuery Interactions: Implemented form validation using jQuery to ensure accurate and user-friendly data entry.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">Form Validation</span>
+                                <span class="tech-pill">jQuery</span>
+                                <span class="tech-pill">UX</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/e35TLRxyktE" title="Event Budget Planner Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Event Budget Planner</h3>
+                            <p class="project-description">Java Fundamentals (Spring Boot, Spring MVC, Java, JSP, CSS, Bootstrap, JavaScript, SQL, MySQL): Developed a full-stack CRUD application implementing OOP principles and database integration.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">Spring MVC</span>
+                                <span class="tech-pill">MySQL</span>
+                                <span class="tech-pill">CRUD</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card" data-aos="fade-up">
+                        <div class="img-container">
+                            <div class="video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/NXUXj6Ow4I8" title="Noodle Logger Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Noodle Logger</h3>
+                            <p class="project-description">Java Fundamentals (Spring Boot, Spring MVC, Java, JSP, CSS, Bootstrap, JavaScript, SQL, MySQL): Built a data-logging web application utilizing Spring MVC and MySQL Workbench.</p>
+                            <div class="pill-container project-pills">
+                                <span class="tech-pill">Spring Boot</span>
+                                <span class="tech-pill">MySQL</span>
+                                <span class="tech-pill">Logging</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            &copy; 2026 Mariel Hope T. Balazuela. Built with HTML, CSS, JavaScript, Bootstrap, jQuery, AOS, Swiper, Typed.js, Google Fonts, and custom scripts.
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

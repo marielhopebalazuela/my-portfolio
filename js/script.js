@@ -75,7 +75,11 @@ $(document).ready(function() {
             indices[project] = limits[project];
         }
 
-        $(`#img-${project}`).attr('src', `../images/projects/${project}${indices[project]}.png`);
+        const imageFile = project === 'booknook'
+            ? `BookNook${indices[project]}.png`
+            : `${project}${indices[project]}.png`;
+
+        $(`#img-${project}`).attr('src', `../images/projects/${imageFile}`);
     };
 
     let isDown = false;
